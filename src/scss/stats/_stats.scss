@@ -1,0 +1,89 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.stats{
+    background-color: v.$darkDesaturatedBlue;
+    margin: 5rem auto;
+    max-width: 35rem;
+    display: grid;
+    grid-template-rows: 25rem 1fr;
+    border-radius: 1.5rem;
+    @include m.tablet{
+        margin: 25rem auto;
+        max-width: 100rem;
+        grid-template-rows: unset;
+        grid-template-columns: repeat(2,1fr);
+        grid-auto-flow: dense;
+    }
+    &__imagen{
+        background-image: linear-gradient(to bottom, transparentize( darken(v.$softViolet,25%), .4) 0%, transparentize( darken(v.$softViolet,25%), .4) 100%), url("../img/image-header-mobile.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        border-top-left-radius: 1.5rem;
+        border-top-right-radius: 1.5rem;
+        @include m.tablet{
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 1.5rem;
+            grid-column: 2/3;  
+            background-image: linear-gradient(to bottom, transparentize( darken(v.$softViolet,25%), .4) 0%, transparentize( darken(v.$softViolet,25%), .4) 100%), url("../img/image-header-desktop.jpg");  
+        }
+    }
+    &__info{
+        padding: 4rem 3rem 2rem 3rem;
+        text-align: center;
+        @include m.tablet{
+            grid-column: 1/2;
+            padding: 7rem 5rem 5rem 5rem;
+            text-align: left;
+        }
+        @include m.desktop{
+            padding: 7rem 7.1rem 5rem 6rem;
+        }
+    }
+    &__heading{
+        color: v.$white;
+        font-weight: 700;
+        font-size: 3rem;
+        span{
+            color: v.$softViolet;
+        }
+        @include m.tablet{
+            font-size: 3.3rem;
+        }
+    }
+    &__description{
+        color: v.$slightlyTransparentWhite;
+        padding: .5rem 0;
+    }
+    &__data{
+        margin-top: 2rem;
+        @include m.tablet{
+            display: flex;
+        }
+    }
+    &__data-info{
+        margin-top: 3rem;
+        margin-bottom: 2.5rem;
+        @include m.tablet{
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 0 .5rem;
+            margin-bottom: 0;
+        }
+    }
+    &__quantity{
+        font-weight: 700;
+        font-size: 2rem;
+        color: v.$white;
+        margin: 0;
+        line-height: 1;
+    }
+    &__text{
+        color: v.$statsHeading;
+        margin: 0;
+        text-transform: uppercase;
+        font-family: v.$fuenteSecundaria;
+    }
+}
